@@ -20,7 +20,7 @@ static CGFloat const kDefaultTabBarFontSize = 14;
     
     [self customizeNavigationBarColor:primaryColor textColor:secondaryColor fontName:fontName fontSize:kDefaultNavigationBarFontSize buttonColor:secondaryColor];
     [self customizeNavigationBarButtonColor:secondaryColor];
-    [self customizeTabBarColor:primaryColor textColor:secondaryColor fontName:fontName fontSize:kDefaultTabBarFontSize];
+    [self customizeTabBarColor:primaryColor textColor:primaryColor fontName:fontName fontSize:kDefaultTabBarFontSize];
     [self customizeSwitchOnColor:primaryColor];
     [self customizeSearchBarColor:primaryColor buttonTintColor:secondaryColor];
     [self customizeActivityIndicatorColor:primaryColor];
@@ -44,13 +44,7 @@ static CGFloat const kDefaultTabBarFontSize = 14;
     [[UINavigationBar appearance] setBarTintColor:barColor];
     [[UINavigationBar appearance] setTintColor:buttonColor];
     
-    UIFont *font = [UIFont fontWithName:fontName size:fontSize];
-    if (font) {
-        [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                               NSForegroundColorAttributeName: textColor,
-                                                               NSFontAttributeName: font
-                                                               }];
-    }
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: textColor }];
 }
 
 
@@ -71,11 +65,6 @@ static CGFloat const kDefaultTabBarFontSize = 14;
 + (void)customizeTabBarColor:(UIColor *)barColor textColor:(UIColor *)textColor fontName:(NSString *)fontName fontSize:(CGFloat)fontSize {
     [[UITabBar appearance] setBarTintColor:barColor];
     [[UITabBar appearance] setTintColor:textColor];
-    
-    UIFont *font = [UIFont fontWithName:fontName size:fontSize];
-    if (font) {
-        [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName: font} forState:UIControlStateNormal];
-    }
 }
 
 
